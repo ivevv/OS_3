@@ -20,6 +20,7 @@ void* func1(void *arg)
 		write(pipefd[1], &buf, count);
 		sleep(1);
 	}
+	close(pipefd[1]);
 	return NULL;
 }
 
@@ -33,7 +34,9 @@ void* func2(void *arg)
 		read(pipefd[0], &buf, count);
 		cout << buf << " ";
 		cout.flush();
+		//printf("%d\n", buf);
 	}
+	close(pipefd[0]);
 	return NULL;
 }
 
@@ -47,7 +50,7 @@ int main()
 	flag = false;
 	pthread_join(th1, NULL);
 	pthread_join(th2, NULL);
-	close(pipefd[0]);
-	close(pipefd[1]);
+	//close(pipefd[0]);
+	//close(pipefd[1]);
 	return 0;
 }
