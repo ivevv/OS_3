@@ -47,7 +47,6 @@ int main()
 	flag = false;
 	pthread_join(th1, NULL);
 	pthread_join(th2, NULL);
-	cout << "wtf is wrong here" << endl;
 	close(pipefd[0]);
 	close(pipefd[1]);
 	return 0;
