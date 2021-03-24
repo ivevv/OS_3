@@ -32,9 +32,12 @@ void* func2(void *arg)
 		buf = 0;
 		size_t count = sizeof(int);
 		read(pipefd[0], &buf, count);
-		cout << buf << " ";
-		cout.flush();
-		//printf("%d\n", buf);
+		if (buf != 0)
+		{
+			cout << buf << " ";
+			cout.flush();
+			//printf("%d\n", buf);
+		}
 	}
 	close(pipefd[0]);
 	return NULL;
